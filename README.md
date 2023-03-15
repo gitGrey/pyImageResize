@@ -22,11 +22,11 @@ copy the file 'img-resize.py' into the pyImageResize folder <br>
 copy the file 'img-resize-remove-HQ-postfix.py' into the pyImageResizeFolder <br>
 
 # Usage:
-put your images into the 'in' folder and execute the 'img-resize.py' script
-.
-.
-wait
-.
-.
-=> check the output folder
+put your images into the 'in' folder and execute the 'img-resize.py' script <br>
+. <br>
+. <br>
+wait <br>
+. <br>
+. <br>
+=> check the output folder <br>
 
