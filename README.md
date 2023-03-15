@@ -107,7 +107,12 @@ File Ext          : .jpg
 Cur Size: (w x h) : 3014 x 4367
 New Size: (w x h) : 602 x 873
 Output File       : /home/gitgrey/Pictures/pyImageResize/out/test-img-20.jpg
+
 move input file to output folder
+inputfile  : github-mark-white.png
+from here  : /home/i7/pyImageResize/pyImageResize/in
+moved to   : /home/i7/pyImageResize/pyImageResize/out
+and renamed: github-mark-white-HQ.png
 
 #
 # Done
