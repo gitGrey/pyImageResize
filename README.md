@@ -8,17 +8,17 @@ to the script, which get converted and outputted on the initial file location
 
 # Setup
 
-setup a directory like this:
-(create a 'in' and 'out' folder)
+setup a directory like this: <br>
+(create a 'in' and 'out' folder) <br>
 
 # Linux
 mkdir pyImageResize <br>
-cd  pyImageResize
-mkdir in
-mkdir out
+cd  pyImageResize <br>
+mkdir in <br>
+mkdir out <br>
 
-copy the file 'img-resize.py' into the pyImageResize folder
-copy the file 'img-resize-remove-HQ-postfix.py' into the pyImageResizeFolder
+copy the file 'img-resize.py' into the pyImageResize folder <br>
+copy the file 'img-resize-remove-HQ-postfix.py' into the pyImageResizeFolder <br>
 
 # Usage:
 put your images into the 'in' folder and execute the 'img-resize.py' script
