@@ -5,10 +5,10 @@ it makes use of python's PIL (Python Image Library)
 Under Windows it can be integrated into the "SendTo" menu and files can be send directly 
 to the script, which get converted and outputted on the initial file location
 
-#Usage:
+# Usage:
 
-##Linux
-put your images into the 'in' folder and execute the 'img-resize.py' script <br>
+## Linux
+put your images into the **'in'** folder and execute the **'img-resize.py'** script <br>
 . <br>
 . <br>
 wait <br>
@@ -16,8 +16,8 @@ wait <br>
 . <br>
 => check the output folder <br>
 
-##Windows
-put your images into the 'in' folder and execute the 'img-resize.py' script <br>
+## Windows
+put your images into the **'in'** folder and execute the **'img-resize.py'** script <br>
 . <br>
 . <br>
 wait <br>
