@@ -25,10 +25,10 @@ wait <br>
 . <br>
 => check the output folder <br>
 
-or add a link to the *.py-Files into the 'SendTo'  / 'Senden An' Folder of Windows Context Menu
+or add a link to the *.py-Files into the **'SendTo'  / 'Senden An'** Folder of Windows Context Menu
 therefore type: <br>
-Windows-Key + 'R'<br>
-shell:sendto <br>
+> Windows-Key + 'R'<br>
+> shell:sendto <br>
 add now a link / Verknüpfung to your *.py files <br>
 
 with this you can now select a image file in windows explorer and send it directly to the pyImageResize script. 
