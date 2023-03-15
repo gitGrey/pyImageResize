@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import os
 import sys
@@ -8,6 +8,9 @@ import sys
 from PIL import Image
 
 #import Image
+
+#debug prints
+deb = 1
 
 size = 128, 128
 
@@ -19,6 +22,16 @@ ratio_list.append(60)
 ratio_list.append(50)
 ratio_list.append(40)
 ratio_list.append(20)
+
+def create_dir(d):
+    #d = os.path.dirname(f)
+    if not os.path.exists(d):
+       os.makedirs(d)
+       if deb:
+           print("Output Dir (created): " + d) 
+    else:
+        if deb:
+            print("Output Dir (existing): " + d)
 
 def resize(fn, outPath, ratio):
 
@@ -95,12 +108,17 @@ if __name__ == '__main__':
     print("Current Path   : %s" % path)
     print("Full Name      : %s" % fullName)
 
-
+    print("")
     print("This is the name of the script: ", sys.argv[0])
     numArgs=len(sys.argv)
-    print("Number of arguments: ", len(sys.argv))
-    print("The arguments are: " , str(sys.argv))    
+    print("Number of arguments           : ", len(sys.argv))
+    print("The arguments are             : " , str(sys.argv))    
 
+    p = 'in'
+    create_dir(p)
+        
+    p = 'out'
+    create_dir(p)
 
     myImages = [] # list of image filenames
 
@@ -234,7 +252,13 @@ if __name__ == '__main__':
     
     # enable line below for "send to" debugging if needed
     #python 2 line below
-    key = raw_input("Press enter to exit: ")
+    #key = raw_input("Press enter to exit: ")
     #python 3 line below
     #key = input("Press enter to exit: ")
+    
+    try: input = raw_input
+    except NameError: pass
+    key = input("Press enter to exit: ")
+    
+    
     print("ciao")
