@@ -31,3 +31,23 @@ therefore type: <br>
 add now a link / Verknüpfung to your *.py files <br>
 
 with this you can now select a image file in windows explorer and send it directly to the pyImageResize script. 
+
+
+You can also do 'drag and drop' files in windows to the PY script.
+To do so, pls follow: <br>
+Drag and drop onto Python script in Windows Explorer <br>
+https://stackoverflow.com/questions/142844/drag-and-drop-onto-python-script-in-windows-explorer <br>
+<br>
+**... stackoverflow citation:**
+
+> Here’s a registry import file that you can use to do this. Copy the following into a .reg file and run it (Make sure that your .py extensions are mapped to Python.File).
+
+```
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Python.File\shellex\DropHandler]
+@="{60254CA5-953B-11CF-8C96-00AA00B8708C}"
+```
+
+> This makes Python scripts use the WSH drop handler, which is compatible with long filenames. To use the short filename handler, replace the GUID with **86C86720-42A0-1069-A2E8-08002B30309D**.
+
