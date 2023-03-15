@@ -27,6 +27,9 @@ def create_dir(d):
     #d = os.path.dirname(f)
     if not os.path.exists(d):
        os.makedirs(d)
+       
+       print("")
+       
        if deb:
            print("Output Dir (created): " + d) 
     else:
@@ -126,9 +129,7 @@ if __name__ == '__main__':
         # no arguments attached we run in 
         # folder mode
     
-        #https://stackoverflow.com/questions/142844/drag-and-drop-onto-python-script-in-windows-explorer
-      
-        
+        #https://stackoverflow.com/questions/142844/drag-and-drop-onto-python-script-in-windows-explorer  
       
         searchDir = "./in" # current dir
         #searchDir = "./lp-images"
@@ -229,6 +230,7 @@ if __name__ == '__main__':
             
             resize(ffn_in, outPath, ratio)
         
+        print("")
         if numArgs==1:
             print("move input file to output folder")
         else:
@@ -240,9 +242,12 @@ if __name__ == '__main__':
         fn_out   = fn_noExt + "-HQ" + ext
         #ffn_out = os.path.join(outPath,infile) # same name 
         ffn_out = os.path.join(outPath,fn_out) # new name (HQ= High Quality)
-        os.rename(ffn_in, ffn_out)            
-           
-            
+        os.rename(ffn_in, ffn_out)
+                    
+        print("inputfile  : %s" % infile)   
+        print("from here  : %s" % p_in)   
+        print("moved to   : %s" % outPath)     
+        print("and renamed: %s" % fn_out) 
     
     
     print("")    
