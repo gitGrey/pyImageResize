@@ -5,23 +5,9 @@ it makes use of python's PIL (Python Image Library)
 Under Windows it can be integrated into the "SendTo" menu and files can be send directly 
 to the script, which get converted and outputted on the initial file location
 
+#Usage:
 
-# Setup
-
-setup a directory like this: <br>
-(create a 'in' and 'out' folder) <br>
-
-# Linux
-```
-mkdir pyImageResize
-cd  pyImageResize
-mkdir in
-mkdir out
-```
-copy the file 'img-resize.py' into the pyImageResize folder <br>
-copy the file 'img-resize-remove-HQ-postfix.py' into the pyImageResizeFolder <br>
-
-# Usage:
+##Linux
 put your images into the 'in' folder and execute the 'img-resize.py' script <br>
 . <br>
 . <br>
@@ -30,3 +16,19 @@ wait <br>
 . <br>
 => check the output folder <br>
 
+##Windows
+put your images into the 'in' folder and execute the 'img-resize.py' script <br>
+. <br>
+. <br>
+wait <br>
+. <br>
+. <br>
+=> check the output folder <br>
+
+or add a link to the *.py-Files into the 'SendTo'  / 'Senden An' Folder of Windows Context Menu
+therefore type: <br>
+Windows-Key + 'R'<br>
+shell:sendto <br>
+add now a link / Verknüpfung to your *.py files <br>
+
+with this you can now select a image file in windows explorer and send it directly to the pyImageResize script. 
