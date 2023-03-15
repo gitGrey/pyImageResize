@@ -12,7 +12,7 @@ setup a directory like this: <br>
 (create a 'in' and 'out' folder) <br>
 
 # Linux
-...bash
+...
 mkdir pyImageResize
 cd  pyImageResize
 mkdir in
