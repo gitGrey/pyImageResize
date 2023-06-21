@@ -5,6 +5,9 @@ import sys
 
 #pip install Pillow
 # To update, run: python.exe -m pip install --upgrade pip
+#
+# in case of SSL-Cetrificates Warnings and Fetch Problems:
+# pip3 install --trusted-host pypi.org --trusted-host files.pythonhosted.org Pillow
 from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
