@@ -16,9 +16,8 @@ from PIL import Image
 # define your conversion mode here
 #
 mode = "toWEBP"
-#mode = "toPNG"
-#mode = "toJPG"
-
+mode = "toPNG"
+mode = "toJPG"
 
 mode = mode.lower()
 
@@ -163,13 +162,13 @@ if __name__ == '__main__':
         fmt =""
         err = False
 
-        if mode.lower() == "toJPG".lower() and ext == ".jpg":
+        if mode == "toJPG".lower() and ext == ".jpg":
             err = True
 
-        if mode.lower() == "toPNG".lower() and ext == ".png":
+        if mode == "toPNG".lower() and ext == ".png":
             err = True
 
-        if mode.lower() == "toWEBP".lower() and ext == ".webp":
+        if mode == "toWEBP".lower() and ext == ".webp":
             err = True
 
         print("Convert:")
@@ -180,15 +179,15 @@ if __name__ == '__main__':
             print("---> " + ffn_in)
             continue
 
-        if mode.lower() == "toJPG".lower():
+        if mode == "toJPG".lower():
             ext = ".jpg"
             fmt = "jpeg"
 
-        if mode.lower() == "toPNG".lower():
+        if mode == "toPNG".lower():
             ext = ".png"
             fmt = "png"
 
-        if mode.lower() == "toWEBP".lower():
+        if mode == "toWEBP".lower():
             ext = ".webp"
             fmt = "webp"
 
