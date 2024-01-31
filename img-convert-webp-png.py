@@ -16,9 +16,11 @@ from PIL import Image
 # define your conversion mode here
 #
 mode = "toWEBP"
-mode = "toPNG"
-mode = "toJPG"
+#mode = "toPNG"
+#mode = "toJPG"
 
+
+mode = mode.lower()
 
 # *******************************************************
 # *******************************************************
@@ -42,7 +44,6 @@ if __name__ == '__main__':
     print("Current Path   : %s" % path)
     print("Full Name      : %s" % fullName)
 
-
     print("This is the name of the script: ", sys.argv[0])
     numArgs=len(sys.argv)
     print("Number of arguments: ", len(sys.argv))
@@ -55,8 +56,6 @@ if __name__ == '__main__':
         # folder mode
 
         #https://stackoverflow.com/questions/142844/drag-and-drop-onto-python-script-in-windows-explorer
-
-
 
         searchDir = "./in" # current dir
         #searchDir = "./lp-images"
@@ -133,9 +132,10 @@ if __name__ == '__main__':
 
     else:
 
+        # we run in drag and drop / send to mode / command line mode
         myImages = sys.argv[1:]
+        print("Will work on the following images")
         print(myImages)
-
 
     for infile in myImages:
 
@@ -163,41 +163,45 @@ if __name__ == '__main__':
         fmt =""
         err = False
 
-        if mode == "toJPG" and ext == ".jpg":
+        if mode.lower() == "toJPG".lower() and ext == ".jpg":
             err = True
-            continue
 
-        if mode == "toPNG" and ext == ".png":
+        if mode.lower() == "toPNG".lower() and ext == ".png":
             err = True
-            continue
 
-        if mode == "toWEBP" and ext == ".webp":
+        if mode.lower() == "toWEBP".lower() and ext == ".webp":
             err = True
-            continue
+
+        print("Convert:")
 
         if err:
             print("Nothing to do, input and output format are same type: " + ext )
             print("---> " + fn)
             print("---> " + ffn_in)
+            continue
 
-        if mode == "toJPG":
+        if mode.lower() == "toJPG".lower():
             ext = ".jpg"
             fmt = "jpeg"
 
-        if mode == "toPNG":
+        if mode.lower() == "toPNG".lower():
             ext = ".png"
             fmt = "png"
 
-        if mode == "toWEBP":
-            ext == ".webp"
-            fmt == "webp"
+        if mode.lower() == "toWEBP".lower():
+            ext = ".webp"
+            fmt = "webp"
 
         fn_out   = fn_noExt + ext
         #ffn_out = os.path.join(outPath,infile) # same name
         ffn_out = os.path.join(outPath,fn_out) # new name (HQ= High Quality)
 
+        print("From : " + infile)
+        print("From : " + ffn_in)
         im = Image.open(ffn_in).convert("RGB")
         im.save(ffn_out, fmt)
+        print("To   : " + fn_out)
+        print("To   : " + ffn_out)
 
 
 
