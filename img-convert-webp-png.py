@@ -10,16 +10,23 @@ from PIL import Image
 # in case of SSL-Cetrificates Warnings and Fetch Problems:
 # pip3 install --trusted-host pypi.org --trusted-host files.pythonhosted.org Pillow
 
+from enum import Enum
+
 #import Image
+
+class runMode(Enum):
+    toWEBP = 1
+    toPNG = 2
+    toJPG = 3
 
 #
 # define your conversion mode here
 #
-mode = "toWEBP"
-mode = "toPNG"
-mode = "toJPG"
+mode = runMode.toWEBP
+mode = runMode.toPNG
+mode = runMode.toJPG
 
-mode = mode.lower()
+
 
 # *******************************************************
 # *******************************************************
@@ -43,12 +50,16 @@ if __name__ == '__main__':
     print("Current Path   : %s" % path)
     print("Full Name      : %s" % fullName)
 
-    print("This is the name of the script: ", sys.argv[0])
+    print("Name of the script  : ", sys.argv[0])
     numArgs=len(sys.argv)
-    print("Number of arguments: ", len(sys.argv))
-    print("The arguments are: " , str(sys.argv))
+    print("Number of arguments : ", len(sys.argv))
+    print("The arguments are   : ", str(sys.argv))
 
     myImages = [] # list of image filenames
+
+    print("")
+    print("Work/run Mode : ", mode.name)
+
 
     if numArgs==1:
         # no arguments attached we run in
@@ -99,6 +110,9 @@ if __name__ == '__main__':
                 if '.jpg' in theFile.lower():
                     isImage=1
 
+                if '.jpeg' in theFile.lower():
+                    isImage=1
+
                 if '.png' in theFile.lower():
                     isImage=1
 
@@ -131,11 +145,12 @@ if __name__ == '__main__':
 
     else:
 
-        # we run in drag and drop / send to mode / command line mode
+        # we run in drag and drop mode / send to mode / command line mode
         myImages = sys.argv[1:]
         print("Will work on the following images")
         print(myImages)
 
+    i=0
     for infile in myImages:
 
         if numArgs==1:
@@ -162,16 +177,18 @@ if __name__ == '__main__':
         fmt =""
         err = False
 
-        if mode == "toJPG".lower() and ext == ".jpg":
+        if mode == runMode.toJPG and ext == ".jpg":
             err = True
 
-        if mode == "toPNG".lower() and ext == ".png":
+        if mode == runMode.toPNG and ext == ".png":
             err = True
 
-        if mode == "toWEBP".lower() and ext == ".webp":
+        if mode == runMode.toWEBP and ext == ".webp":
             err = True
 
-        print("Convert:")
+        i+=1
+        print("")
+        print("Convert " + str(i) + " / " + str(len(myImages)))
 
         if err:
             print("Nothing to do, input and output format are same type: " + ext )
@@ -179,15 +196,15 @@ if __name__ == '__main__':
             print("---> " + ffn_in)
             continue
 
-        if mode == "toJPG".lower():
+        if mode == runMode.toJPG:
             ext = ".jpg"
             fmt = "jpeg"
 
-        if mode == "toPNG".lower():
+        if mode == runMode.toPNG:
             ext = ".png"
             fmt = "png"
 
-        if mode == "toWEBP".lower():
+        if mode == runMode.toWEBP:
             ext = ".webp"
             fmt = "webp"
 
