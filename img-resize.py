@@ -1,107 +1,29 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import os
 import sys
 
 #pip install Pillow
 # To update, run: python.exe -m pip install --upgrade pip
-#
+from PIL import Image
+
 # in case of SSL-Cetrificates Warnings and Fetch Problems:
 # pip3 install --trusted-host pypi.org --trusted-host files.pythonhosted.org Pillow
-from PIL import Image
-from PIL import ImageDraw
-from PIL import ImageFont
+
+
 
 #import Image
-
-#debug prints
-deb = 1
 
 size = 128, 128
 
 ratio_list = []
 # Percent Value of
 # original image
-ratio_list.append(80)
-ratio_list.append(60)
+#ratio_list.append(80)
+#ratio_list.append(60)
 ratio_list.append(50)
 ratio_list.append(40)
 ratio_list.append(20)
-
-global colorBackground
-colorBackground = (73, 109, 137)
-colorBackground = "black"
-
-global colorOutline
-colorOutline  = (73, 109, 137)
-colorOutline  = (0xe4, 0x83, 0x15)
-#colorOutline = "lime"
-
-
-global lp_image_name
-lp_image_name = "test-img.png"
-
-def create_dir(d):
-    #d = os.path.dirname(f)
-    if not os.path.exists(d):
-       os.makedirs(d)
-
-       print("")
-       create_test_image(d)
-
-       if deb:
-           print("Output Dir (created): " + d)
-    else:
-        if deb:
-            print("Output Dir (existing): " + d)
-
-def create_test_image(directory):
-    width = 3000
-    height= 4000
-    print('create image with width x height: %d x %d' % (width, height))
-
-    # with Backgroundcolor
-    img = Image.new('RGB', (width, height), colorBackground)
-
-    # Transparent Background
-    # (alpha = transparency = last parameter of the color attribute)
-    transp = (0, 0, 0, 0)
-    #print(transp[3])
-    img = Image.new('RGBA', (width, height), (0, 0, 0, 0))
-
-    d = ImageDraw.Draw(img)
-    loc=(0,0)
-    text="1234567890"
-    colorText = (99, 88, 77)
-
-    fontComic = "comic.ttf"
-    fontArial = "arial.ttf"
-    fontname = fontComic
-    #fontname = fontArial
-    fontsize=500
-    #thefont = ImageFont.truetype(fontname, fontsize)
-    thefont = ImageFont.load_default()
-    #size2 = d.textsize(text,font=font)
-    #print('size width x height: %d x %d' % (size2[0], size2[1]))
-    d.text(loc, text, fill=colorText, font=thefont)
-
-    d.rectangle((0, 0, width-2, height-1), outline=colorOutline)
-    d.rectangle((1, 1, width-3, height-2), outline=colorOutline)
-    d.rectangle((2, 2, width-4, height-3), outline=colorOutline)
-    # net line switches off the pixels
-    #d.rectangle((width-1, 0, width-1, height-1), outline="black")
-    d.rectangle((width-1, 0, width-1, height-1), outline=transp)
-
-    x=10
-    y=10
-    pixels    = img.load()
-    col = pixels[x, y]
-    print("Color @ %d %d = %d %d %d" % (x, y, col[0], col[1], col[2]))
-
-    # lp = light painting
-
-    ffn_out = os.path.join(directory, lp_image_name)
-    img.save(ffn_out)
 
 def resize(fn, outPath, ratio):
 
@@ -130,7 +52,8 @@ def resize(fn, outPath, ratio):
             newHeight = int( float(s[1])*float(ratio) )
             print("New Size: (w x h) : %d x %d" % (newWidth, newHeight))
 
-            newImg = img.resize((newWidth, newHeight), Image.ANTIALIAS)
+            #newImg = img.resize((newWidth, newHeight), Image.ANTIALIAS) #  ANTIALIAS is deprecated and will be removed in Pillow 10
+            newImg = img.resize((newWidth, newHeight), Image.LANCZOS)
             #thumbImg = im.thumbnail(size, Image.ANTIALIAS)
 
             imgType=""
@@ -178,17 +101,12 @@ if __name__ == '__main__':
     print("Current Path   : %s" % path)
     print("Full Name      : %s" % fullName)
 
-    print("")
+
     print("This is the name of the script: ", sys.argv[0])
     numArgs=len(sys.argv)
-    print("Number of arguments           : ", len(sys.argv))
-    print("The arguments are             : " , str(sys.argv))
+    print("Number of arguments: ", len(sys.argv))
+    print("The arguments are: " , str(sys.argv))
 
-    p = 'in'
-    create_dir(p)
-
-    p = 'out'
-    create_dir(p)
 
     myImages = [] # list of image filenames
 
@@ -197,6 +115,8 @@ if __name__ == '__main__':
         # folder mode
 
         #https://stackoverflow.com/questions/142844/drag-and-drop-onto-python-script-in-windows-explorer
+
+
 
         searchDir = "./in" # current dir
         #searchDir = "./lp-images"
@@ -297,7 +217,6 @@ if __name__ == '__main__':
 
             resize(ffn_in, outPath, ratio)
 
-        print("")
         if numArgs==1:
             print("move input file to output folder")
         else:
@@ -311,10 +230,7 @@ if __name__ == '__main__':
         ffn_out = os.path.join(outPath,fn_out) # new name (HQ= High Quality)
         os.rename(ffn_in, ffn_out)
 
-        print("inputfile  : %s" % infile)
-        print("from here  : %s" % p_in)
-        print("moved to   : %s" % outPath)
-        print("and renamed: %s" % fn_out)
+
 
 
     print("")
@@ -326,11 +242,5 @@ if __name__ == '__main__':
     #python 2 line below
     #key = raw_input("Press enter to exit: ")
     #python 3 line below
-    #key = input("Press enter to exit: ")
-
-    try: input = raw_input
-    except NameError: pass
     key = input("Press enter to exit: ")
-
-
     print("ciao")
